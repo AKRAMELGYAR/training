@@ -14,7 +14,7 @@ app.set('views' , 'views')
 app.use(express.static(path.join(__dirname , 'public')));
 app.use(express.json())
 
-app.use('/Api' , studentRouter)
+app.use('/' , studentRouter)
 
 
 // mongoose.connect(process.env.URI).then(

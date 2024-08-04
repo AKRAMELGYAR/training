@@ -9,7 +9,7 @@ router.route('/')
             .get(studentController.getupload)
 // router.route('/student/:id')
 //             .get(studentController.getstudent)
-router.route('/upload')
+router.route('/result')
             .post(upload.single('file'),studentController.addstudent)
 
 
