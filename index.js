@@ -4,11 +4,17 @@ const app = express()
 const mongoose = require('mongoose')
 const studentRouter = require('./routes/info')
 const cors = require('cors')
+const corsConfig = {
+    origin : "*",
+    credential : true,
+    methods : ["GET","POST","PUT","DELETE"],
+};
+app.options("",cors(corsConfig))
+app.use(cors(corsConfig))
 const ejs = require('ejs')
 const dotenv = require('dotenv')
 dotenv.config({path : './config.env'})
 
-app.use(cors())
 app.set('view engine', 'ejs');
 app.set('views' , 'views')
 app.use(express.static(path.join(__dirname , 'public')));
