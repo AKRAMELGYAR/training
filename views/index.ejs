@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <style>
+    .failed-course {
+      background-color: #d3d3d3; /* لون الرمادي */
+    }
+  </style>
+</head>
+<body>
+  <div class="student-card">
+    <h1>معلومات الطالب</h1>
+    <p>الاسم: <%= student.studentInfo.name %></p>
+    <p>رقم الطالب: <%= student.studentInfo.studentNumber %></p>
+    <p>رقم البطاقة: <%= student.studentInfo.idNumber %></p>
+    <p>الجنسية: <%= student.studentInfo.nationality %></p>
+    <p>مكان الميلاد: <%= student.studentInfo.birthPlace %></p>
+    <p>تاريخ الميلاد: <%= student.studentInfo.birthDate %></p>
+    <p>حالة القيد: <%= student.studentInfo.enrollmentStatus %></p>
+    <p>مستوى الدراسة: <%= student.studentInfo.studyLevel %></p>
+    <p>عام الالتحاق: <%= student.studentInfo.admissionYear %></p>
+  </div>
+
+  <div class="qualification-card">
+    <h2>المؤهل السابق</h2>
+    <p>سنة المؤهل: <%= student.previousQualification.qualificationYear %></p>
+    <p>نوع المؤهل: <%= student.previousQualification.qualificationType %></p>
+    <p>إجمالي الدرجات: <%= student.previousQualification.totalScore %></p>
+  </div>
+
+  <div class="statistics-card">
+    <h2>الإحصاءات</h2>
+    <p>إجمالي الساعات: <%= totalhours %></p>
+    <p>إجمالي الساعات الناجحة: <%= totalHoursSuccess %></p>
+    <p>إجمالي النقاط: <%= totalpoints %></p>
+    <p>المعدل التراكمي: <%= totalGpa %></p>
+    <p>النسبة المئوية: <%= percentage %></p>
+    <p>التقدير : <%= grade %></p>
+    <p>ساعات الخصم: <%= discountHours %></p>
+    <p>مجموع الدرجات: <%= totaldegrees %></p>
+  </div>
+
+  <div class="courses-table">
+    <h2>الكورسات</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>اسم الكورس</th>
+          <th>كود الكورس</th>
+          <th>الدرجة</th>
+          <th>النقاط</th>
+          <th>السكور</th>
+          <th>الساعات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% student.courses.forEach(course => { %>
+          <tr class="<%= course.grade === 'F' ? 'failed-course' : '' %>">
+            <td><%= course.courseName %></td>
+            <td><%= course.courseCode %></td>
+            <td><%= course.grade %></td>
+            <td><%= course.points %></td>
+            <td><%= course.score %></td>
+            <td><%= course.hours %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
